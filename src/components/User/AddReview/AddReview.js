@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import AdminSidebar from "../../Admin/AdminSidebar/AdminSidebar";
+import Sidebar from "../Sidebar/Sidebar";
+import swal from "sweetalert";
 
 const AddReview = () => {
   const [reviewInfo, setReviewInfo] = useState({});
@@ -10,6 +11,7 @@ const AddReview = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    e.target.reset();
     const formData = new FormData();
     formData.append("name", reviewInfo.name);
     formData.append("designation", reviewInfo.designation);
@@ -21,7 +23,11 @@ const AddReview = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          alert("Service added successfully!");
+          swal({
+            title: "Congratulations!",
+            text: "Review Added Successfully!",
+            icon: "success",
+          });
         }
       })
       .catch((error) => {
@@ -32,10 +38,10 @@ const AddReview = () => {
     <div>
       <div className="row">
         <div className="col-md-3">
-          <AdminSidebar />
+          <Sidebar />
         </div>
         <div className="col-md-9">
-          <h5 style={{ textAlign: "center", color: "blue" }}>Add Review</h5>
+          <h5 className="sidebar-title">Add Review</h5>
           <div className="container">
             <form onSubmit={handleSubmit}>
               <input
@@ -60,7 +66,7 @@ const AddReview = () => {
                 name="description"
                 id=""
                 cols="30"
-                rows="10"
+                rows="5"
                 placeholder="Your Opinion"
               ></textarea>
               <br />

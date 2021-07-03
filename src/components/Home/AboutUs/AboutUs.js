@@ -7,7 +7,7 @@ const AboutUs = () => {
   return (
     <section>
       <div className="container my-5">
-        <h2 className="my-5 text-brand text-center">About Us</h2>
+        <h2 className="my-5 text-title">About Us</h2>
         <div className="row">
           <div className="col-md-4">
             <div className="card shadow p-2  mb-5 bg-body rounded">

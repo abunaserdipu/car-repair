@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Sidebar from "../../User/Sidebar/Sidebar";
+import swal from "sweetalert";
 
 const AddService = () => {
   const [info, setInfo] = useState({});
@@ -14,6 +16,7 @@ const AddService = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    e.target.reset();
     const formData = new FormData();
     formData.append("file", file);
     formData.append("name", info.name);
@@ -27,7 +30,11 @@ const AddService = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          alert("Service added successfully!");
+          swal({
+            title: "Congratulations!",
+            text: "You added service successfully!",
+            icon: "success",
+          });
         }
       })
       .catch((error) => {
@@ -36,9 +43,13 @@ const AddService = () => {
   };
   return (
     <div>
-      <div className="container">
-        <div className="row">
-          <div className="card p-3">
+      <div className="row">
+        <div className="col-md-3">
+          <Sidebar />
+        </div>
+        <div className="col-md-9">
+          <h5 className="sidebar-title">Add Service</h5>
+          <div className="container">
             <form onSubmit={handleSubmit}>
               <input
                 onBlur={handleBlur}
@@ -64,7 +75,7 @@ const AddService = () => {
                 name="description"
                 id=""
                 cols="30"
-                rows="10"
+                rows="5"
                 onBlur={handleBlur}
                 placeholder="Description"
                 required
@@ -75,6 +86,7 @@ const AddService = () => {
                 className="form-control"
                 type="file"
                 name="file"
+                required
               />
               <br />
 

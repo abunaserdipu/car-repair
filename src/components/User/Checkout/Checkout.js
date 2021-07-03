@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { UserContext } from "../../../App";
 import ProcessPayment from "../ProcessPayment/ProcessPayment";
-import UserSidebar from "../UserSidebar/UserSidebar";
+import Sidebar from "../Sidebar/Sidebar";
 const Checkout = () => {
   const { serviceId } = useParams();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -22,10 +22,11 @@ const Checkout = () => {
     <div>
       <div className="row">
         <div className="col-md-4">
-          <UserSidebar />
+          <Sidebar />
         </div>
         <div className="col-md-8">
           <div className="container">
+            <h5 className="sidebar-title">Confirm your order</h5>
             <form action="">
               <input
                 type="text"

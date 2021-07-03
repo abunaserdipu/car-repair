@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AdminSidebar from "../AdminSidebar/AdminSidebar";
+import Sidebar from "../../User/Sidebar/Sidebar";
 import ShowService from "./ShowService";
 
 const ManageServices = () => {
@@ -13,13 +13,11 @@ const ManageServices = () => {
     <div>
       <div className="row">
         <div className="col-md-3">
-          <AdminSidebar />
+          <Sidebar />
         </div>
 
         <div className="col-md-9">
-          <h5 style={{ textAlign: "center", color: "blue" }}>
-            Manage Services
-          </h5>
+          <h5 className="sidebar-title">Manage Services</h5>
           <table class="table">
             <thead>
               <tr>
@@ -34,6 +32,17 @@ const ManageServices = () => {
               ))}
             </tbody>
           </table>
+          {services.length === 0 && (
+            <div className="d-flex justify-content-center">
+              <div
+                className="spinner-grow"
+                style={{ width: "3rem", height: "3rem" }}
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

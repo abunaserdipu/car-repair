@@ -27,9 +27,9 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link ms-5 fw-bold" href="#banner">
+              <Link className="nav-link ms-5 fw-bold" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link ms-5 fw-bold" to="/services">
@@ -47,11 +47,16 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link ms-5 fw-bold" to="/login">
-                Login
-              </Link>
+              {loggedInUser.name ? (
+                <li className="my-1 ms-5 fw-bold">{loggedInUser.name}
+                <button className="btn btn-brand ms-5" onClick={() => setLoggedInUser({})}>Sign Out</button>
+                </li>
+              ) : (
+                <Link className="nav-link ms-5 fw-bold" to="/login">
+                  Login
+                </Link>
+              )}
             </li>
-            <li className="my-3">{loggedInUser.name}</li>
           </ul>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useHistory } from "react-router";
+import "./Service.css";
 
 const Service = ({ service }) => {
   const history = useHistory();
@@ -9,8 +10,8 @@ const Service = ({ service }) => {
     history.push(`checkout/${service}`);
   };
   return (
-    <div className="col-md-4 col-sm-6">
-      <div className="card shadow p-2  mb-5 bg-body rounded">
+    <section className="col-md-4 col-sm-6">
+      <div className="card service-card shadow p-2  mb-5 bg-body rounded">
         {service.image ? (
           <img
             style={{ width: "100%" }}
@@ -41,7 +42,7 @@ const Service = ({ service }) => {
           take service
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

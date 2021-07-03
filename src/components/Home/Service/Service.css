@@ -1,0 +1,7 @@
+.service-card:hover {
+  box-shadow: 0 1.9px 13.1px rgba(0, 0, 0, 0.155),
+    0 15px 105px rgba(0, 0, 0, 0.31);
+  transform: scale(1.1);
+  transition-delay: 100ms;
+  transition-duration: 200ms;
+}

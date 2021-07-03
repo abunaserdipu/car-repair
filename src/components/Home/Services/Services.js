@@ -11,8 +11,19 @@ const Services = () => {
   return (
     <section>
       <div className="container my-5">
-        <h2 className="my-5 text-brand text-center">Our Services</h2>
+        <h2 className="my-5 text-title">Our Services</h2>
         <div className="row">
+          {services.length === 0 && (
+            <div className="d-flex justify-content-center">
+              <div
+                className="spinner-grow"
+                style={{ width: "3rem", height: "3rem" }}
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          )}
           {services.map((service) => (
             <Service key={service._id} service={service} />
           ))}

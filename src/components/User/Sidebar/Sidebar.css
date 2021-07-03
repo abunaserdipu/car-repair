@@ -2,6 +2,9 @@
   background-image: linear-gradient(40deg, #19d3ae, #0fcfec);
   position: fixed;
 }
+.sidebar Link {
+  margin-bottom: 2em;
+}
 .sidebar li {
   margin-bottom: 2em;
 }
@@ -14,4 +17,16 @@
 }
 .sidebar svg {
   margin-right: 5px;
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar {
+    position: relative;
+    max-height: 300px;
+    width: 100%;
+  }
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
 }

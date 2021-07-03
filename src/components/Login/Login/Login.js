@@ -4,6 +4,9 @@ import "firebase/auth";
 import firebaseConfig from "./firebaseConfig";
 import { UserContext } from "../../../App";
 import { useHistory, useLocation } from "react-router";
+import Image from "../../../images/login-bg.png";
+import ParticlesBg from "particles-bg";
+import googleImage from "../../../images/google-image.png";
 
 const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -19,8 +22,8 @@ const Login = () => {
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
-        const { displayName, email } = result.user;
-        const signedInUser = { name: displayName, email };
+        const { displayName, email, photoURL } = result.user;
+        const signedInUser = { name: displayName, email, photo: photoURL };
         setLoggedInUser(signedInUser);
         storeAuthToken();
       })
@@ -44,13 +47,24 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <section>
       <div className="container">
-        <button onClick={handleGoogleSignIn} className="btn btn-brand">
-          Google SignIn
-        </button>
+        <div className="row align-items-center" style={{ height: "100vh" }}>
+          <div className="col-md-6">
+            <div class=" mt-5 text-center">
+              <button onClick={handleGoogleSignIn} className="btn btn-brand">
+                <img className="img-fluid" src={googleImage} /> <br />
+                Google SignIn
+              </button>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <img className="img-fluid" src={Image} />
+          </div>
+        </div>
       </div>
-    </div>
+      <ParticlesBg type="cobweb" bg={true} />
+    </section>
   );
 };
 

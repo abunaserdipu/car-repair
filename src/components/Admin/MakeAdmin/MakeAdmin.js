@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import AdminSidebar from "../AdminSidebar/AdminSidebar";
+import Sidebar from "../../User/Sidebar/Sidebar";
+import swal from "sweetalert";
 
 const MakeAdmin = () => {
   const [admin, setAdmin] = useState({});
@@ -8,6 +9,7 @@ const MakeAdmin = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    e.target.reset();
     fetch("https://intense-gorge-85136.herokuapp.com/addAdmin", {
       method: "POST",
       headers: {
@@ -18,7 +20,11 @@ const MakeAdmin = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          alert("Service added successfully!");
+          swal({
+            title: "Congratulations!",
+            text: "New Admin Added successfully!",
+            icon: "success",
+          });
         }
       })
       .catch((error) => {
@@ -28,10 +34,10 @@ const MakeAdmin = () => {
   return (
     <div className="row">
       <div className="col-md-3">
-        <AdminSidebar />
+        <Sidebar />
       </div>
       <div className="col-md-9">
-        <h5 style={{ textAlign: "center", color: "blue" }}>Add New Admin</h5>
+        <h5 className="sidebar-title">Add New Admin</h5>
         <div className="container">
           <form onSubmit={handleSubmit}>
             <input
@@ -41,6 +47,7 @@ const MakeAdmin = () => {
               name="email"
               placeholder="joh@gmail.com"
             />
+            <br />
             <input className="btn btn-brand" type="submit" />
           </form>
         </div>
